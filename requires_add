@@ -4,8 +4,8 @@ Whoosh
 pypi(alabaster)
 docutils
 imagesize
-requests
-snowballstemmer
-sphinxcontrib-websupport
+pypi(requests)
+pypi(snowballstemmer)
+pypi(sphinxcontrib_websupport)
 recommonmark
 python-future

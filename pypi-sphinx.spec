@@ -22,9 +22,9 @@ Requires: imagesize
 Requires: pypi(alabaster)
 Requires: python-future
 Requires: recommonmark
-Requires: requests
-Requires: snowballstemmer
-Requires: sphinxcontrib-websupport
+Requires: pypi(requests)
+Requires: pypi(snowballstemmer)
+Requires: pypi(sphinxcontrib_websupport)
 BuildRequires : buildreq-distutils3
 BuildRequires : pypi(alabaster)
 BuildRequires : pypi(babel)
