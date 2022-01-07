@@ -1,0 +1,11 @@
+# This file contains additional runtime requirements that did not get
+# picked up automatically. One name per line, no whitespace.
+Whoosh
+pypi(alabaster)
+docutils
+imagesize
+requests
+snowballstemmer
+sphinxcontrib-websupport
+recommonmark
+python-future
