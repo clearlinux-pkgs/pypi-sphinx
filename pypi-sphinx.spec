@@ -25,6 +25,7 @@ Requires: pypi-Whoosh
 Requires: pypi-docutils
 Requires: pypi-imagesize
 Requires: python-future
+Provides: Sphinx
 BuildRequires : buildreq-distutils3
 BuildRequires : pypi(alabaster)
 BuildRequires : pypi(babel)
