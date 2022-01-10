@@ -1,11 +1,8 @@
 # This file contains additional runtime requirements that did not get
 # picked up automatically. One name per line, no whitespace.
-pypi-Whoosh
 pypi(alabaster)
-pypi-docutils
-pypi-imagesize
+pypi(imagesize)
 pypi(requests)
 pypi(snowballstemmer)
 pypi(sphinxcontrib_websupport)
-pypi(recommonmark)
-python-future
+pypi-docutils
