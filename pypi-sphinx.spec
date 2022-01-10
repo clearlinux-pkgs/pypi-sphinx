@@ -6,7 +6,7 @@
 #
 Name     : pypi-sphinx
 Version  : 4.3.2
-Release  : 177
+Release  : 178
 URL      : https://files.pythonhosted.org/packages/5f/70/83589844bd82a5de3a748757fb39b2440435716e6a295827b13967dfa97f/Sphinx-4.3.2.tar.gz
 Source0  : https://files.pythonhosted.org/packages/5f/70/83589844bd82a5de3a748757fb39b2440435716e6a295827b13967dfa97f/Sphinx-4.3.2.tar.gz
 Source1  : https://files.pythonhosted.org/packages/5f/70/83589844bd82a5de3a748757fb39b2440435716e6a295827b13967dfa97f/Sphinx-4.3.2.tar.gz.asc
@@ -17,15 +17,11 @@ Requires: pypi-sphinx-bin = %{version}-%{release}
 Requires: pypi-sphinx-python = %{version}-%{release}
 Requires: pypi-sphinx-python3 = %{version}-%{release}
 Requires: pypi(alabaster)
-Requires: pypi(recommonmark)
+Requires: pypi(imagesize)
 Requires: pypi(requests)
 Requires: pypi(snowballstemmer)
 Requires: pypi(sphinxcontrib_websupport)
-Requires: pypi-Whoosh
 Requires: pypi-docutils
-Requires: pypi-imagesize
-Requires: python-future
-Provides: Sphinx
 BuildRequires : buildreq-distutils3
 BuildRequires : pypi(alabaster)
 BuildRequires : pypi(babel)
@@ -33,10 +29,8 @@ BuildRequires : pypi(docutils)
 BuildRequires : pypi(imagesize)
 BuildRequires : pypi(jinja2)
 BuildRequires : pypi(packaging)
-BuildRequires : pypi(pluggy)
 BuildRequires : pypi(py)
 BuildRequires : pypi(pygments)
-BuildRequires : pypi(pytest)
 BuildRequires : pypi(requests)
 BuildRequires : pypi(setuptools)
 BuildRequires : pypi(snowballstemmer)
@@ -46,8 +40,10 @@ BuildRequires : pypi(sphinxcontrib_htmlhelp)
 BuildRequires : pypi(sphinxcontrib_jsmath)
 BuildRequires : pypi(sphinxcontrib_qthelp)
 BuildRequires : pypi(sphinxcontrib_serializinghtml)
-BuildRequires : pypi(tox)
-BuildRequires : pypi(virtualenv)
+BuildRequires : pypi-pluggy
+BuildRequires : pypi-pytest
+BuildRequires : pypi-tox
+BuildRequires : pypi-virtualenv
 
 %description
 ========
@@ -109,7 +105,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1641840051
+export SOURCE_DATE_EPOCH=1641842289
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
