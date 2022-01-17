@@ -1,4 +1,16 @@
 # This file contains recursive sources that require this package
+Pacemaker
+aria2
+casync
 ceph
+cyrus-sasl
+dnf
+dnf-plugins-core
+dpdk
+extra-cmake-modules
+fontforge
+mkl-dnn
+openvswitch
 qemu
 qemu-guest-additions
+suricata
