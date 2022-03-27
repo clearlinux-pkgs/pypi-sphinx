@@ -10,6 +10,7 @@ dpdk
 extra-cmake-modules
 fontforge
 mkl-dnn
+notmuch
 openvswitch
 qemu
 qemu-guest-additions

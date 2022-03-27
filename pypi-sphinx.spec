@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x102C2C17498D6B9E (i.tkomiya@gmail.com)
 #
 Name     : pypi-sphinx
-Version  : 4.4.0
-Release  : 179
-URL      : https://files.pythonhosted.org/packages/c9/08/c2932e66460cfbc8973928d276dc82ccde2d24b365055eeda9f0afc1951e/Sphinx-4.4.0.tar.gz
-Source0  : https://files.pythonhosted.org/packages/c9/08/c2932e66460cfbc8973928d276dc82ccde2d24b365055eeda9f0afc1951e/Sphinx-4.4.0.tar.gz
-Source1  : https://files.pythonhosted.org/packages/c9/08/c2932e66460cfbc8973928d276dc82ccde2d24b365055eeda9f0afc1951e/Sphinx-4.4.0.tar.gz.asc
+Version  : 4.5.0
+Release  : 180
+URL      : https://files.pythonhosted.org/packages/d5/b9/b831ea20dde3c3b726e41403eaee92cc448083cef310790c31c6ccfb22e3/Sphinx-4.5.0.tar.gz
+Source0  : https://files.pythonhosted.org/packages/d5/b9/b831ea20dde3c3b726e41403eaee92cc448083cef310790c31c6ccfb22e3/Sphinx-4.5.0.tar.gz
+Source1  : https://files.pythonhosted.org/packages/d5/b9/b831ea20dde3c3b726e41403eaee92cc448083cef310790c31c6ccfb22e3/Sphinx-4.5.0.tar.gz.asc
 Summary  : Python documentation generator
 Group    : Development/Tools
 License  : MIT
@@ -27,7 +27,6 @@ BuildRequires : pypi(alabaster)
 BuildRequires : pypi(babel)
 BuildRequires : pypi(docutils)
 BuildRequires : pypi(imagesize)
-BuildRequires : pypi(importlib_metadata)
 BuildRequires : pypi(jinja2)
 BuildRequires : pypi(packaging)
 BuildRequires : pypi(py)
@@ -79,7 +78,6 @@ Requires: pypi(alabaster)
 Requires: pypi(babel)
 Requires: pypi(docutils)
 Requires: pypi(imagesize)
-Requires: pypi(importlib_metadata)
 Requires: pypi(jinja2)
 Requires: pypi(packaging)
 Requires: pypi(pygments)
@@ -97,15 +95,15 @@ python3 components for the pypi-sphinx package.
 
 
 %prep
-%setup -q -n Sphinx-4.4.0
-cd %{_builddir}/Sphinx-4.4.0
+%setup -q -n Sphinx-4.5.0
+cd %{_builddir}/Sphinx-4.5.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1642377850
+export SOURCE_DATE_EPOCH=1648416700
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
