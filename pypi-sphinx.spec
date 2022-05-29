@@ -5,15 +5,16 @@
 # Source0 file verified with key 0x102C2C17498D6B9E (i.tkomiya@gmail.com)
 #
 Name     : pypi-sphinx
-Version  : 4.5.0
-Release  : 180
-URL      : https://files.pythonhosted.org/packages/d5/b9/b831ea20dde3c3b726e41403eaee92cc448083cef310790c31c6ccfb22e3/Sphinx-4.5.0.tar.gz
-Source0  : https://files.pythonhosted.org/packages/d5/b9/b831ea20dde3c3b726e41403eaee92cc448083cef310790c31c6ccfb22e3/Sphinx-4.5.0.tar.gz
-Source1  : https://files.pythonhosted.org/packages/d5/b9/b831ea20dde3c3b726e41403eaee92cc448083cef310790c31c6ccfb22e3/Sphinx-4.5.0.tar.gz.asc
+Version  : 5.0.0
+Release  : 181
+URL      : https://files.pythonhosted.org/packages/ea/c0/8a5833e4e2f5924f96c34d0a546ef22ac487c4c423a4c1b93f72186683bb/Sphinx-5.0.0.tar.gz
+Source0  : https://files.pythonhosted.org/packages/ea/c0/8a5833e4e2f5924f96c34d0a546ef22ac487c4c423a4c1b93f72186683bb/Sphinx-5.0.0.tar.gz
+Source1  : https://files.pythonhosted.org/packages/ea/c0/8a5833e4e2f5924f96c34d0a546ef22ac487c4c423a4c1b93f72186683bb/Sphinx-5.0.0.tar.gz.asc
 Summary  : Python documentation generator
 Group    : Development/Tools
 License  : MIT
 Requires: pypi-sphinx-bin = %{version}-%{release}
+Requires: pypi-sphinx-license = %{version}-%{release}
 Requires: pypi-sphinx-python = %{version}-%{release}
 Requires: pypi-sphinx-python3 = %{version}-%{release}
 Requires: pypi(alabaster)
@@ -55,9 +56,18 @@ Sphinx
 %package bin
 Summary: bin components for the pypi-sphinx package.
 Group: Binaries
+Requires: pypi-sphinx-license = %{version}-%{release}
 
 %description bin
 bin components for the pypi-sphinx package.
+
+
+%package license
+Summary: license components for the pypi-sphinx package.
+Group: Default
+
+%description license
+license components for the pypi-sphinx package.
 
 
 %package python
@@ -95,15 +105,18 @@ python3 components for the pypi-sphinx package.
 
 
 %prep
-%setup -q -n Sphinx-4.5.0
-cd %{_builddir}/Sphinx-4.5.0
+%setup -q -n Sphinx-5.0.0
+cd %{_builddir}/Sphinx-5.0.0
+pushd ..
+cp -a Sphinx-5.0.0 buildavx2
+popd
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1648416700
+export SOURCE_DATE_EPOCH=1653847523
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -116,14 +129,35 @@ export MAKEFLAGS=%{?_smp_mflags}
 pypi-dep-fix.py . docutils
 python3 setup.py build
 
+pushd ../buildavx2/
+export CFLAGS="$CFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 "
+export CXXFLAGS="$CXXFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 "
+export FFLAGS="$FFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 "
+export FCFLAGS="$FCFLAGS -m64 -march=x86-64-v3 "
+export LDFLAGS="$LDFLAGS -m64 -march=x86-64-v3 "
+pypi-dep-fix.py . docutils
+python3 setup.py build
+
+popd
 %install
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/package-licenses/pypi-sphinx
+cp %{_builddir}/Sphinx-5.0.0/LICENSE %{buildroot}/usr/share/package-licenses/pypi-sphinx/56a684b1be3bc361790ffa2bcf39d0a140b4ac2b
 python3 -tt setup.py build  install --root=%{buildroot}
 pypi-dep-fix.py %{buildroot} docutils
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
 echo ----[ mark ]----
+pushd ../buildavx2/
+export CFLAGS="$CFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 "
+export CXXFLAGS="$CXXFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 "
+export FFLAGS="$FFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 "
+export FCFLAGS="$FCFLAGS -m64 -march=x86-64-v3 "
+export LDFLAGS="$LDFLAGS -m64 -march=x86-64-v3 "
+python3 -tt setup.py build install --root=%{buildroot}-v3
+popd
+/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot}/usr/share/clear/optimized-elf/ %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 
 %files
 %defattr(-,root,root,-)
@@ -134,6 +168,10 @@ echo ----[ mark ]----
 /usr/bin/sphinx-autogen
 /usr/bin/sphinx-build
 /usr/bin/sphinx-quickstart
+
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/pypi-sphinx/56a684b1be3bc361790ffa2bcf39d0a140b4ac2b
 
 %files python
 %defattr(-,root,root,-)
