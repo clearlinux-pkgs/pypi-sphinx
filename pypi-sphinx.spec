@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x102C2C17498D6B9E (i.tkomiya@gmail.com)
 #
 Name     : pypi-sphinx
-Version  : 5.0.1
-Release  : 182
-URL      : https://files.pythonhosted.org/packages/9c/4e/a1a978d4b4f0de4632e2f00e67472a6135346b35c142dea873e8e92803c1/Sphinx-5.0.1.tar.gz
-Source0  : https://files.pythonhosted.org/packages/9c/4e/a1a978d4b4f0de4632e2f00e67472a6135346b35c142dea873e8e92803c1/Sphinx-5.0.1.tar.gz
-Source1  : https://files.pythonhosted.org/packages/9c/4e/a1a978d4b4f0de4632e2f00e67472a6135346b35c142dea873e8e92803c1/Sphinx-5.0.1.tar.gz.asc
+Version  : 5.0.2
+Release  : 183
+URL      : https://files.pythonhosted.org/packages/83/5f/0ebf0c94dffd7a848ebfeafc0d3147a784afffb44e2c6fcaeab7eadd67ad/Sphinx-5.0.2.tar.gz
+Source0  : https://files.pythonhosted.org/packages/83/5f/0ebf0c94dffd7a848ebfeafc0d3147a784afffb44e2c6fcaeab7eadd67ad/Sphinx-5.0.2.tar.gz
+Source1  : https://files.pythonhosted.org/packages/83/5f/0ebf0c94dffd7a848ebfeafc0d3147a784afffb44e2c6fcaeab7eadd67ad/Sphinx-5.0.2.tar.gz.asc
 Summary  : Python documentation generator
 Group    : Development/Tools
 License  : MIT
@@ -105,10 +105,10 @@ python3 components for the pypi-sphinx package.
 
 
 %prep
-%setup -q -n Sphinx-5.0.1
-cd %{_builddir}/Sphinx-5.0.1
+%setup -q -n Sphinx-5.0.2
+cd %{_builddir}/Sphinx-5.0.2
 pushd ..
-cp -a Sphinx-5.0.1 buildavx2
+cp -a Sphinx-5.0.2 buildavx2
 popd
 
 %build
@@ -116,7 +116,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1654270089
+export SOURCE_DATE_EPOCH=1655476254
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -143,7 +143,7 @@ popd
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/pypi-sphinx
-cp %{_builddir}/Sphinx-5.0.1/LICENSE %{buildroot}/usr/share/package-licenses/pypi-sphinx/56a684b1be3bc361790ffa2bcf39d0a140b4ac2b
+cp %{_builddir}/Sphinx-5.0.2/LICENSE %{buildroot}/usr/share/package-licenses/pypi-sphinx/56a684b1be3bc361790ffa2bcf39d0a140b4ac2b
 python3 -tt setup.py build  install --root=%{buildroot}
 pypi-dep-fix.py %{buildroot} docutils
 echo ----[ mark ]----
