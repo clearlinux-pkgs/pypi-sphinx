@@ -15,3 +15,4 @@ openvswitch
 qemu
 qemu-guest-additions
 suricata
+wireplumber
