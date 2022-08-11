@@ -4,7 +4,7 @@
 #
 Name     : pypi-sphinx
 Version  : 5.1.1
-Release  : 187
+Release  : 188
 URL      : https://files.pythonhosted.org/packages/3a/30/ac07935542607c876f3fcee1c1ab043d253332567009994a1bf71d9b55cd/Sphinx-5.1.1.tar.gz
 Source0  : https://files.pythonhosted.org/packages/3a/30/ac07935542607c876f3fcee1c1ab043d253332567009994a1bf71d9b55cd/Sphinx-5.1.1.tar.gz
 Summary  : Python documentation generator
