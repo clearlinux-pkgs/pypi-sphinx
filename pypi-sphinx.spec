@@ -5,16 +5,15 @@
 # Source0 file verified with key 0x52C8F72A61F0FB52 (9087854+aa-turner@users.noreply.github.com)
 #
 Name     : pypi-sphinx
-Version  : 5.3.0
-Release  : 193
-URL      : https://files.pythonhosted.org/packages/af/b2/02a43597980903483fe5eb081ee8e0ba2bb62ea43a70499484343795f3bf/Sphinx-5.3.0.tar.gz
-Source0  : https://files.pythonhosted.org/packages/af/b2/02a43597980903483fe5eb081ee8e0ba2bb62ea43a70499484343795f3bf/Sphinx-5.3.0.tar.gz
-Source1  : https://files.pythonhosted.org/packages/af/b2/02a43597980903483fe5eb081ee8e0ba2bb62ea43a70499484343795f3bf/Sphinx-5.3.0.tar.gz.asc
+Version  : 6.0.0
+Release  : 194
+URL      : https://files.pythonhosted.org/packages/46/dd/afcd33ecf25b04b6b18bfd7cedf635875fbe9b06de28268e81ecede904eb/Sphinx-6.0.0.tar.gz
+Source0  : https://files.pythonhosted.org/packages/46/dd/afcd33ecf25b04b6b18bfd7cedf635875fbe9b06de28268e81ecede904eb/Sphinx-6.0.0.tar.gz
+Source1  : https://files.pythonhosted.org/packages/46/dd/afcd33ecf25b04b6b18bfd7cedf635875fbe9b06de28268e81ecede904eb/Sphinx-6.0.0.tar.gz.asc
 Summary  : Python documentation generator
 Group    : Development/Tools
 License  : MIT
 Requires: pypi-sphinx-bin = %{version}-%{release}
-Requires: pypi-sphinx-license = %{version}-%{release}
 Requires: pypi-sphinx-python = %{version}-%{release}
 Requires: pypi-sphinx-python3 = %{version}-%{release}
 Requires: pypi(alabaster)
@@ -30,6 +29,9 @@ BuildRequires : pypi-pluggy
 BuildRequires : pypi-pytest
 BuildRequires : pypi-tox
 BuildRequires : pypi-virtualenv
+# Suppress stripping binaries
+%define __strip /bin/true
+%define debug_package %{nil}
 
 %description
 ========
@@ -42,18 +44,9 @@ Sphinx
 %package bin
 Summary: bin components for the pypi-sphinx package.
 Group: Binaries
-Requires: pypi-sphinx-license = %{version}-%{release}
 
 %description bin
 bin components for the pypi-sphinx package.
-
-
-%package license
-Summary: license components for the pypi-sphinx package.
-Group: Default
-
-%description license
-license components for the pypi-sphinx package.
 
 
 %package python
@@ -91,10 +84,10 @@ python3 components for the pypi-sphinx package.
 
 
 %prep
-%setup -q -n Sphinx-5.3.0
-cd %{_builddir}/Sphinx-5.3.0
+%setup -q -n Sphinx-6.0.0
+cd %{_builddir}/Sphinx-6.0.0
 pushd ..
-cp -a Sphinx-5.3.0 buildavx2
+cp -a Sphinx-6.0.0 buildavx2
 popd
 
 %build
@@ -102,15 +95,15 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1668102445
+export SOURCE_DATE_EPOCH=1672418374
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=auto "
-export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
-export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
-export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=auto "
+export CFLAGS="$CFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
+export FCFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
+export FFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
+export CXXFLAGS="$CXXFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
 export MAKEFLAGS=%{?_smp_mflags}
 pypi-dep-fix.py . docutils
 python3 -m build --wheel --skip-dependency-check --no-isolation
@@ -128,8 +121,6 @@ popd
 %install
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/package-licenses/pypi-sphinx
-cp %{_builddir}/Sphinx-%{version}/LICENSE %{buildroot}/usr/share/package-licenses/pypi-sphinx/56a684b1be3bc361790ffa2bcf39d0a140b4ac2b || :
 pip install --root=%{buildroot} --no-deps --ignore-installed dist/*.whl
 pypi-dep-fix.py %{buildroot} docutils
 echo ----[ mark ]----
@@ -154,10 +145,6 @@ popd
 /usr/bin/sphinx-autogen
 /usr/bin/sphinx-build
 /usr/bin/sphinx-quickstart
-
-%files license
-%defattr(0644,root,root,0755)
-/usr/share/package-licenses/pypi-sphinx/56a684b1be3bc361790ffa2bcf39d0a140b4ac2b
 
 %files python
 %defattr(-,root,root,-)
