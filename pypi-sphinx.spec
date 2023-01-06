@@ -5,15 +5,16 @@
 # Source0 file verified with key 0x52C8F72A61F0FB52 (9087854+aa-turner@users.noreply.github.com)
 #
 Name     : pypi-sphinx
-Version  : 6.1.0
-Release  : 196
-URL      : https://files.pythonhosted.org/packages/f6/17/ec54f1d8980bd8ec2bd4ca0e77ba6086d3db5aee718304593ba83f864125/Sphinx-6.1.0.tar.gz
-Source0  : https://files.pythonhosted.org/packages/f6/17/ec54f1d8980bd8ec2bd4ca0e77ba6086d3db5aee718304593ba83f864125/Sphinx-6.1.0.tar.gz
-Source1  : https://files.pythonhosted.org/packages/f6/17/ec54f1d8980bd8ec2bd4ca0e77ba6086d3db5aee718304593ba83f864125/Sphinx-6.1.0.tar.gz.asc
+Version  : 6.1.1
+Release  : 197
+URL      : https://files.pythonhosted.org/packages/7e/dd/aec4b725f3315e2beb3d5bc670ce567c8c9f31ab7703e7a154bb549115cf/Sphinx-6.1.1.tar.gz
+Source0  : https://files.pythonhosted.org/packages/7e/dd/aec4b725f3315e2beb3d5bc670ce567c8c9f31ab7703e7a154bb549115cf/Sphinx-6.1.1.tar.gz
+Source1  : https://files.pythonhosted.org/packages/7e/dd/aec4b725f3315e2beb3d5bc670ce567c8c9f31ab7703e7a154bb549115cf/Sphinx-6.1.1.tar.gz.asc
 Summary  : Python documentation generator
 Group    : Development/Tools
-License  : MIT
+License  : BSD-3-Clause MIT
 Requires: pypi-sphinx-bin = %{version}-%{release}
+Requires: pypi-sphinx-license = %{version}-%{release}
 Requires: pypi-sphinx-python = %{version}-%{release}
 Requires: pypi-sphinx-python3 = %{version}-%{release}
 Requires: pypi(alabaster)
@@ -44,9 +45,18 @@ Sphinx
 %package bin
 Summary: bin components for the pypi-sphinx package.
 Group: Binaries
+Requires: pypi-sphinx-license = %{version}-%{release}
 
 %description bin
 bin components for the pypi-sphinx package.
+
+
+%package license
+Summary: license components for the pypi-sphinx package.
+Group: Default
+
+%description license
+license components for the pypi-sphinx package.
 
 
 %package python
@@ -84,10 +94,10 @@ python3 components for the pypi-sphinx package.
 
 
 %prep
-%setup -q -n Sphinx-6.1.0
-cd %{_builddir}/Sphinx-6.1.0
+%setup -q -n Sphinx-6.1.1
+cd %{_builddir}/Sphinx-6.1.1
 pushd ..
-cp -a Sphinx-6.1.0 buildavx2
+cp -a Sphinx-6.1.1 buildavx2
 popd
 
 %build
@@ -95,7 +105,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1672934213
+export SOURCE_DATE_EPOCH=1672969870
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -121,6 +131,8 @@ popd
 %install
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/package-licenses/pypi-sphinx
+cp %{_builddir}/Sphinx-%{version}/LICENSE %{buildroot}/usr/share/package-licenses/pypi-sphinx/3fb70ed419556b23da93f0fc9e497a8e6ed108c9 || :
 pip install --root=%{buildroot} --no-deps --ignore-installed dist/*.whl
 pypi-dep-fix.py %{buildroot} docutils
 echo ----[ mark ]----
@@ -145,6 +157,10 @@ popd
 /usr/bin/sphinx-autogen
 /usr/bin/sphinx-build
 /usr/bin/sphinx-quickstart
+
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/pypi-sphinx/3fb70ed419556b23da93f0fc9e497a8e6ed108c9
 
 %files python
 %defattr(-,root,root,-)
