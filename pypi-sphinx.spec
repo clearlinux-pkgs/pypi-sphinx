@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x52C8F72A61F0FB52 (9087854+aa-turner@users.noreply.github.com)
 #
 Name     : pypi-sphinx
-Version  : 6.1.2
-Release  : 198
-URL      : https://files.pythonhosted.org/packages/1a/09/7f5e77006825a89062aa7e9db4df1a4561fd37df364ce28ab03e8083264a/Sphinx-6.1.2.tar.gz
-Source0  : https://files.pythonhosted.org/packages/1a/09/7f5e77006825a89062aa7e9db4df1a4561fd37df364ce28ab03e8083264a/Sphinx-6.1.2.tar.gz
-Source1  : https://files.pythonhosted.org/packages/1a/09/7f5e77006825a89062aa7e9db4df1a4561fd37df364ce28ab03e8083264a/Sphinx-6.1.2.tar.gz.asc
+Version  : 6.1.3
+Release  : 199
+URL      : https://files.pythonhosted.org/packages/db/0b/a0f60c4abd8a69bd5b0d20edde8a8d8d9d4ca825bbd920d328d248fd0290/Sphinx-6.1.3.tar.gz
+Source0  : https://files.pythonhosted.org/packages/db/0b/a0f60c4abd8a69bd5b0d20edde8a8d8d9d4ca825bbd920d328d248fd0290/Sphinx-6.1.3.tar.gz
+Source1  : https://files.pythonhosted.org/packages/db/0b/a0f60c4abd8a69bd5b0d20edde8a8d8d9d4ca825bbd920d328d248fd0290/Sphinx-6.1.3.tar.gz.asc
 Summary  : Python documentation generator
 Group    : Development/Tools
 License  : BSD-3-Clause MIT
@@ -94,10 +94,10 @@ python3 components for the pypi-sphinx package.
 
 
 %prep
-%setup -q -n Sphinx-6.1.2
-cd %{_builddir}/Sphinx-6.1.2
+%setup -q -n Sphinx-6.1.3
+cd %{_builddir}/Sphinx-6.1.3
 pushd ..
-cp -a Sphinx-6.1.2 buildavx2
+cp -a Sphinx-6.1.3 buildavx2
 popd
 
 %build
@@ -105,7 +105,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1673283390
+export SOURCE_DATE_EPOCH=1673387178
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
