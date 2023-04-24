@@ -1,6 +1,7 @@
 # This file contains recursive sources that require this package
 Pacemaker
 aria2
+bind-utils
 casync
 ceph
 cyrus-sasl
@@ -16,6 +17,7 @@ libdnf
 mkl-dnn
 notmuch
 openvswitch
+pytorch
 qemu
 qemu-guest-additions
 suricata
