@@ -6,11 +6,11 @@
 # Source0 file verified with key 0x52C8F72A61F0FB52 (9087854+aa-turner@users.noreply.github.com)
 #
 Name     : pypi-sphinx
-Version  : 7.0.0
-Release  : 202
-URL      : https://files.pythonhosted.org/packages/0a/41/0c3785bce311f85a6e47b151563fec269676f4abdf1171d310d79e8098bb/Sphinx-7.0.0.tar.gz
-Source0  : https://files.pythonhosted.org/packages/0a/41/0c3785bce311f85a6e47b151563fec269676f4abdf1171d310d79e8098bb/Sphinx-7.0.0.tar.gz
-Source1  : https://files.pythonhosted.org/packages/0a/41/0c3785bce311f85a6e47b151563fec269676f4abdf1171d310d79e8098bb/Sphinx-7.0.0.tar.gz.asc
+Version  : 7.0.1
+Release  : 203
+URL      : https://files.pythonhosted.org/packages/61/b6/b2ca621fba7f1d938d75891fe175ba8054b47e803d11727d3e9f4433d86c/Sphinx-7.0.1.tar.gz
+Source0  : https://files.pythonhosted.org/packages/61/b6/b2ca621fba7f1d938d75891fe175ba8054b47e803d11727d3e9f4433d86c/Sphinx-7.0.1.tar.gz
+Source1  : https://files.pythonhosted.org/packages/61/b6/b2ca621fba7f1d938d75891fe175ba8054b47e803d11727d3e9f4433d86c/Sphinx-7.0.1.tar.gz.asc
 Summary  : Python documentation generator
 Group    : Development/Tools
 License  : MIT
@@ -85,10 +85,10 @@ python3 components for the pypi-sphinx package.
 
 
 %prep
-%setup -q -n Sphinx-7.0.0
-cd %{_builddir}/Sphinx-7.0.0
+%setup -q -n Sphinx-7.0.1
+cd %{_builddir}/Sphinx-7.0.1
 pushd ..
-cp -a Sphinx-7.0.0 buildavx2
+cp -a Sphinx-7.0.1 buildavx2
 popd
 
 %build
@@ -96,7 +96,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1682975091
+export SOURCE_DATE_EPOCH=1684030186
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
