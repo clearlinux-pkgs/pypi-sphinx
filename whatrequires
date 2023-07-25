@@ -1,9 +1,7 @@
 # This file contains recursive sources that require this package
-Pacemaker
 aria2
 bind-utils
 casync
-ceph
 cyrus-sasl
 dnf
 dnf-plugins-core
@@ -21,5 +19,6 @@ pytorch
 qemu
 qemu-guest-additions
 suricata
+tiff
 wireplumber
 zathura
