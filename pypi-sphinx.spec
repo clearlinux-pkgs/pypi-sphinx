@@ -4,10 +4,10 @@
 # Using build pattern: pyproject
 #
 Name     : pypi-sphinx
-Version  : 7.2.2
-Release  : 208
-URL      : https://files.pythonhosted.org/packages/85/f9/f3e1e7b2f0615cded9c555aa75692a1004cdce765eccff9f6245473f3657/sphinx-7.2.2.tar.gz
-Source0  : https://files.pythonhosted.org/packages/85/f9/f3e1e7b2f0615cded9c555aa75692a1004cdce765eccff9f6245473f3657/sphinx-7.2.2.tar.gz
+Version  : 7.2.3
+Release  : 209
+URL      : https://files.pythonhosted.org/packages/9f/4f/999e29fbb0998b666a3488d19db0470dbaf340492228f2ce73e2528598a1/sphinx-7.2.3.tar.gz
+Source0  : https://files.pythonhosted.org/packages/9f/4f/999e29fbb0998b666a3488d19db0470dbaf340492228f2ce73e2528598a1/sphinx-7.2.3.tar.gz
 Summary  : Python documentation generator
 Group    : Development/Tools
 License  : MIT
@@ -82,10 +82,10 @@ python3 components for the pypi-sphinx package.
 
 
 %prep
-%setup -q -n sphinx-7.2.2
-cd %{_builddir}/sphinx-7.2.2
+%setup -q -n sphinx-7.2.3
+cd %{_builddir}/sphinx-7.2.3
 pushd ..
-cp -a sphinx-7.2.2 buildavx2
+cp -a sphinx-7.2.3 buildavx2
 popd
 
 %build
@@ -93,7 +93,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1692305534
+export SOURCE_DATE_EPOCH=1692834014
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
