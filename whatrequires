@@ -15,6 +15,7 @@ libdnf
 mkl-dnn
 notmuch
 openvswitch
+pam-python
 pytorch
 qemu
 qemu-guest-additions
