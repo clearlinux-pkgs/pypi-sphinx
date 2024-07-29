@@ -14,9 +14,11 @@ libcomps
 libdnf
 mkl-dnn
 notmuch
+openmpi
 openvino
 openvswitch
 pam-python
+pmix
 pytorch
 qemu
 qemu-guest-additions
