@@ -8,11 +8,11 @@ dnf-plugins-core
 dpdk
 extra-cmake-modules
 fontforge
-hyperscan
 libabigail
 libcomps
 libdnf
 mkl-dnn
+nextcloud-desktop
 notmuch
 openmpi
 openvino
@@ -24,5 +24,6 @@ qemu
 qemu-guest-additions
 suricata
 tiff
+vectorscan
 wireplumber
 zathura
